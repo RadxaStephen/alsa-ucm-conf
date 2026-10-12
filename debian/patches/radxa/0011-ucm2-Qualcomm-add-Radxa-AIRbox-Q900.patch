@@ -1,0 +1,55 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Stephen Chen <stephen@radxa.com>
+Subject: [PATCH] ucm2: Qualcomm: add Radxa AIRbox Q900
+
+Add HDMI port (DP0).
+
+Signed-off-by: Stephen Chen <stephen@radxa.com>
+
+diff --git a/src/ucm2/Qualcomm/sa8775p/radxa-airbox-q900/HiFi.conf b/src/ucm2/Qualcomm/sa8775p/radxa-airbox-q900/HiFi.conf
+new file mode 100644
+--- /dev/null
++++ b/src/ucm2/Qualcomm/sa8775p/radxa-airbox-q900/HiFi.conf
+@@ -0,0 +1,24 @@
++SectionVerb {
++	EnableSequence [
++		cset "name='DISPLAY_PORT_RX_0 Audio Mixer MultiMedia1' 1,1"
++	]
++
++	DisableSequence [
++		cset "name='DISPLAY_PORT_RX_0 Audio Mixer MultiMedia1' 0,0"
++	]
++
++	Value {
++		TQ "HiFi"
++	}
++}
++
++SectionDevice."HDMI" {
++	Comment "HDMI playback"
++
++	Value {
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId},0"
++		PlaybackChannels 2
++		JackControl "DP0 Jack"
++	}
++}
+diff --git a/src/ucm2/Qualcomm/sa8775p/radxa-airbox-q900/radxa-airbox-q900.conf b/src/ucm2/Qualcomm/sa8775p/radxa-airbox-q900/radxa-airbox-q900.conf
+new file mode 100644
+--- /dev/null
++++ b/src/ucm2/Qualcomm/sa8775p/radxa-airbox-q900/radxa-airbox-q900.conf
+@@ -0,0 +1,6 @@
++Syntax 4
++
++SectionUseCase."HiFi" {
++	File "/Qualcomm/sa8775p/radxa-airbox-q900/HiFi.conf"
++	Comment "HiFi quality music"
++}
+diff --git a/src/ucm2/conf.d/sa8775p/LEMANS-Radxa-AIRbox-Q900.conf b/src/ucm2/conf.d/sa8775p/LEMANS-Radxa-AIRbox-Q900.conf
+new file mode 120000
+--- /dev/null
++++ b/src/ucm2/conf.d/sa8775p/LEMANS-Radxa-AIRbox-Q900.conf
+@@ -0,0 +1 @@
++../../Qualcomm/sa8775p/radxa-airbox-q900/radxa-airbox-q900.conf
+\ No newline at end of file
