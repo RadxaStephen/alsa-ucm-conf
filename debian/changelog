@@ -1,3 +1,11 @@
+alsa-ucm-conf (1.2.16.1-radxa-3) noble; urgency=medium
+
+  [ Stephen Chen ]
+  * fix: radxa-vmarc-q9075-io: Only enable HDMI port
+  * feat: Add Radxa AIRbox Q900
+
+ -- "Radxa Computer (Shenzhen) Co., Ltd." <dev@radxa.com>  Wed, 14 Oct 2026 02:32:04 +0000
+
 alsa-ucm-conf (1.2.16.1-radxa-2) noble; urgency=medium
 
   [ Stephen Chen ]
